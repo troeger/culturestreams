@@ -17,3 +17,12 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
         repository: troeger/culturestreams
         tags: latest
+  release:
+    runs-on: self-hosted
+    steps:
+    - name: Install kubectl
+      uses: azure/setup-kubectl@v1
+      with:
+        version: 'latest' 
+    - name: Restart pod for the web app
+      run: kubectl -n troeger delete pod -l app=culturestreams
