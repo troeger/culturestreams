@@ -2,7 +2,8 @@ name: Docker image release
 
 on:
   push:
-    branches: [ master ]
+    tags:        
+      - v*
 
 jobs:
   build:
